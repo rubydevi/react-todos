@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const InputTodo = ({addTodoItem}) => {
+const InputTodo = ({ addTodoItem }) => {
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
 
@@ -22,15 +23,22 @@ const InputTodo = ({addTodoItem}) => {
   return (
     <>
       <form onSubmit={handleSubmit} className="form-container">
-        <input className="input-text"
-          type="text" 
+        <input
+          className="input-text"
+          type="text"
           placeholder="Add Todo..."
           value={title}
-          onChange={handleChange} />
-        <button className="input-submit">Submit</button>
+          onChange={handleChange}
+        />
+        <button type="submit" className="input-submit">Submit</button>
       </form>
       <span className="submit-warning">{message}</span>
     </>
   );
+};
+
+// Prop type validation
+InputTodo.propTypes = {
+  addTodoItem: PropTypes.func.isRequired,
 };
 export default InputTodo;
